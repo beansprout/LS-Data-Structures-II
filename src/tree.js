@@ -11,15 +11,15 @@ class Tree {
 
   contains(val) {
     // should return `true` if the tree or its children the given value.
-    if (this.value === val) return true;
+    let found = 0;
+    if (this.value === val) found++;
     for (let i = 0; i < this.children.length; i++) {
-      if (this.children[i].value === val) return true;
-      if (this.children[i]) return this.children[i].contains(val);
+      if (this.children[i].value === val) found++;
+      if (this.children[i]) found += this.children[i].contains(val);
     }
 //     });
-    return false;
+    return (found > 0);
   }
 }
 
-// tree = {value:val, children:[{value:val, children:[]}, {value:val, children:[]}]}
 module.exports = Tree;
