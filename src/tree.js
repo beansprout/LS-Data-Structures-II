@@ -12,12 +12,11 @@ class Tree {
   contains(val) {
     // should return `true` if the tree or its children the given value.
     if (this.value === val) return true;
-    this.children.forEach((child) => {
-      if (child.value === val) return true;
-      if (child.children[0]) {
-        return child.contains(val);
-      }
-    });
+    for (let i = 0; i < this.children.length; i++) {
+      if (this.children[i].value === val) return true;
+      if (this.children[i]) return this.children[i].contains(val);
+    }
+//     });
     return false;
   }
 }
