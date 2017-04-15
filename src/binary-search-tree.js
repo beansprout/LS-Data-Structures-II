@@ -43,8 +43,13 @@ class BinarySearchTree {
     return (found > 0);
   }
 
-  depthFirstForEach() {
-    return true; // TODO
+  depthFirstForEach(cb) {
+    cb(this.value);
+    // if this.left exists then run this.left.DFF(cb)
+    if (this.left) this.left.depthFirstForEach(cb);
+    // if this.rt exists then run this.rt.DFF(cb)
+    if (this.right) this.right.depthFirstForEach(cb);
+    // return this.value;
   }
 }
 
