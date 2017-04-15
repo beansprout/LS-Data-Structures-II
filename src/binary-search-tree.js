@@ -9,16 +9,18 @@ class BinarySearchTree {
     const child = new BinarySearchTree(value);
     if (this.value > value) {
       if (this.left === null) this.left = child;
-      this.left.addChild(value);
+      this.left.insert(value);
     }
-    if (this.right === null) this.right = child;
-    this.right.addChild(value);
+    if (this.value < value) {
+      if (this.right === null) this.right = child;
+      this.right.insert(value);
+    }
   }
   contains() {
-    return true; //TODO
+    return true; // TODO
   }
   depthFirstForEach() {
-    return true; //TODO
+    return true; // TODO
   }
 }
 
