@@ -29,14 +29,14 @@ class Graph {
   contains(value) {
     const key = Object.keys(this.graph);
     for (let i = 0; i < key.length; i++) {
-      if (key[i] === value) {
+      if (key[i] === value.toString()) {
         return true;
       }
     } return false;
   }
 
-  removeNode() {
-
+  removeNode(value) {
+    delete this.graph[value.toString()];
   }
 
   addEdge() {
@@ -52,3 +52,59 @@ class Graph {
 
 
 module.exports = Graph;
+
+/*
+jsbin
+  addNode(newNode, toNode = undefined) {
+    // add item to graph
+    const newObj = { val: newNode, edgeList: [] };
+    this.graph[newNode] = newObj;
+    if (toNode) {
+      this.graph[newNode].edgeList.push(toNode);
+      this.graph[toNode].edgeList.push(newNode);
+    }
+  }
+
+  contains(value) {
+    const key = Object.keys(this.graph);
+    console.log(key);
+    for (let i = 0; i < key.length; i++) {
+      console.log(key[i], (key[i] === value.toString()));
+      if (key[i] === value.toString()) {
+        return true;
+      }
+    } return false;
+  }
+
+  removeNode(value) {
+     delete this.graph[value.toString()];
+  }
+
+  addEdge() {
+  }
+
+  getEdge() {
+  }
+
+  removeEdge() {
+  }
+
+}
+const graph = new Graph();
+graph.addNode(7);
+graph.addNode(8, 7);
+graph.addNode(9, 8);
+graph.removeNode(8);
+console.log(graph);
+
+contains(value) {
+//     const key = Object.keys(this.graph);
+      console.log(key)
+    for (let i = 0; i < key.length; i++) {
+      console.log(key[i], (key[i] === value.toString()));
+      if (key[i] === value.toString() && this.graph[i] === undefined) {
+        return true;
+      }
+    } return false;
+  }
+  */
