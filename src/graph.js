@@ -46,14 +46,14 @@ class Graph {
     delete this.graph[value.toString()];
   }
 
-  addEdge(fromNode /*3*/, toNode) {
+  addEdge(fromNode, toNode) {
     if (this.graph[fromNode].edgeList.indexOf(toNode) === -1) {
-      this.graph[fromNode].edgeList.push[toNode];
-      this.graph[toNode].edgeList.push[fromNode];
+      this.graph[fromNode].edgeList.push(toNode);
+      this.graph[toNode].edgeList.push(fromNode);
     }
   }
 
-  getEdge() {
+  getEdge(fromNode, toNode) {
     return (this.graph[fromNode].edgeList.indexOf(toNode) !== -1);
   }
 
