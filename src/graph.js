@@ -36,13 +36,25 @@ class Graph {
   }
 
   removeNode(value) {
+    this.graph[value].edgeList.forEach((key) => {
+      const index = this.graph[key].edgeList.indexOf(value);
+      if (index === -1) {
+        return;
+      }
+      this.graph[key].edgeList.splice(index, 1);
+    });
     delete this.graph[value.toString()];
   }
 
-  addEdge() {
+  addEdge(fromNode /*3*/, toNode) {
+    if (this.graph[fromNode].edgeList.indexOf(toNode) === -1) {
+      this.graph[fromNode].edgeList.push[toNode];
+      this.graph[toNode].edgeList.push[fromNode];
+    }
   }
 
   getEdge() {
+    return (this.graph[fromNode].edgeList.indexOf(toNode) !== -1);
   }
 
   removeEdge() {
