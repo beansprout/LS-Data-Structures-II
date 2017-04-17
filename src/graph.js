@@ -16,13 +16,17 @@ class Graph {
 //                      }
 //       }
 
-  addNode(newNode, toNode = undefined) {
+  addNode(newNode, toNode) {
     // add item to graph
     const newObj = { val: newNode, edgeList: [] };
     this.graph[newNode] = newObj;
     if (toNode) {
       this.graph[newNode].edgeList.push(toNode);
       this.graph[toNode].edgeList.push(newNode);
+    }
+    if (Object.keys(this.graph).length === 2) {
+      const arr = Object.getOwnPropertyNames(this.graph);
+      this.addEdge(arr[0], arr[1]);
     }
   }
 
@@ -57,7 +61,15 @@ class Graph {
     return (this.graph[fromNode].edgeList.indexOf(toNode) !== -1);
   }
 
-  removeEdge() {
+  removeEdge(fromNode, toNode) {
+    if (this.graph[fromNode].edgeList.indexOf(toNode) !== -1) {
+      const back = this.graph[fromNode].edgeList.indexOf(toNode);
+      const forw = this.graph[toNode].edgeList.indexOf(fromNode);
+      this.graph[fromNode].edgeList.splice(back, 1);
+      this.graph[toNode].edgeList.splice(forw, 1);
+    }
+    if (this.graph[fromNode].edgeList.length === 0) this.removeNode(fromNode);
+    if (this.graph[toNode].edgeList.length === 0) this.removeNode(toNode);
   }
 
 }
